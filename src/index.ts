@@ -1,6 +1,9 @@
+import { config } from 'dotenv-safe';
 import express, { json, urlencoded } from 'express';
 import { Logger } from './utils/logger';
 import RouterManager from './routes';
+config();
+
 class Server {
   private app: express.Application;
   private port: string | number;

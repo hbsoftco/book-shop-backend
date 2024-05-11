@@ -1,7 +1,7 @@
 import { pino } from 'pino';
 import { pinoHttp } from 'pino-http';
 import { NextFunction, Request, Response } from 'express';
-// import http from 'http';
+
 export class Logger {
   private static instance: Logger;
   private logger!: pino.Logger;
