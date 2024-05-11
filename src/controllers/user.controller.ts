@@ -41,11 +41,11 @@ class UserController {
 
   static async getAllUsers(req: Request, res: Response): Promise<void> {
     try {
-      const books = await User.find();
+      const users = await User.find();
 
       res.status(201).json({
         message: 'All Users',
-        data: books,
+        data: users,
       });
     } catch (error) {
       res.status(500).json({ message: (error as Error).message });
