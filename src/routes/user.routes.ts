@@ -10,6 +10,8 @@ class UserRouter {
   }
 
   private initializeRoutes(): void {
+    this.router.post('/register', UserController.registerUser);
+    this.router.post('/login', UserController.loginUser);
     this.router.get('/', authMiddleware.authenticateToken, UserController.getAllUsers);
   }
 }
