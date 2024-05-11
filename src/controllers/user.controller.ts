@@ -41,10 +41,9 @@ class UserController {
 
   static async getAllUsers(req: Request, res: Response): Promise<void> {
     try {
-      // const books = await User.find();
-      const books = await [{ name: 'hossein' }];
+      const books = await User.find();
 
-      res.status(200).json({
+      res.status(201).json({
         message: 'All Users',
         data: books,
       });
