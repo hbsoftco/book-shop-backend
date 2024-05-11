@@ -1,5 +1,6 @@
 import express, { json, urlencoded } from 'express';
 import { Logger } from './utils/logger';
+import RouterManager from './routes';
 class Server {
   private app: express.Application;
   private port: string | number;
@@ -11,11 +12,16 @@ class Server {
     this.port = port;
 
     this.initializeMiddlewares();
+    this.initializeRoutes();
   }
 
   private initializeMiddlewares(): void {
     this.app.use(json());
     this.app.use(urlencoded({ extended: true }));
+  }
+
+  private initializeRoutes(): void {
+    RouterManager.initializeRoutes(this.app);
   }
 
   public listen(): void {
