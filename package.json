@@ -1,0 +1,13 @@
+{
+  "name": "book-shop-backend",
+  "version": "1.0.0",
+  "description": "This is just for offer to recruiters",
+  "main": "index.js",
+  "license": "ISC",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "typescript": "^5.4.5"
+  }
+}
