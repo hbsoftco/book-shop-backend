@@ -1,7 +1,9 @@
 import { config } from 'dotenv-safe';
 import express, { json, urlencoded } from 'express';
+import { ConnectOptions } from 'mongoose';
 import { Logger } from './utils/logger';
 import RouterManager from './routes';
+import Database from './utils/mongo';
 config();
 
 class Server {
@@ -16,6 +18,15 @@ class Server {
 
     this.initializeMiddlewares();
     this.initializeRoutes();
+    this.connectToDatabase();
+  }
+
+  private connectToDatabase(): void {
+    const uri = process.env.MONGO_URL;
+    const options: ConnectOptions = {};
+
+    const db = Database.getInstance(uri!, options);
+    db.connect();
   }
 
   private initializeMiddlewares(): void {
