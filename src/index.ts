@@ -1,5 +1,5 @@
-import express, { json, urlencoded } from "express";
-import { Logger } from "./utils/logger";
+import express, { json, urlencoded } from 'express';
+import { Logger } from './utils/logger';
 class Server {
   private app: express.Application;
   private port: string | number;
@@ -9,11 +9,18 @@ class Server {
   constructor(port: string | number) {
     this.app = express();
     this.port = port;
+
+    this.initializeMiddlewares();
+  }
+
+  private initializeMiddlewares(): void {
+    this.app.use(json());
+    this.app.use(urlencoded({ extended: true }));
   }
 
   public listen(): void {
     this.app.listen(this.port, () => {
-      this.logger.info(`Server is running on port ${this.port}`);
+      this.logger.info(`Server is running on http://localhost:${this.port}`);
     });
   }
 }
