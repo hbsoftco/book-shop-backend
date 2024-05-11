@@ -18,6 +18,7 @@ class Server {
   private initializeMiddlewares(): void {
     this.app.use(json());
     this.app.use(urlencoded({ extended: true }));
+    this.app.use(this.logger.getHttpLogger());
   }
 
   private initializeRoutes(): void {

@@ -6,7 +6,7 @@ class UserController {
       // const books = await User.find();
       const books = await [];
 
-      res.status(201).json({
+      res.status(200).json({
         message: 'All Users',
         data: books,
       });
