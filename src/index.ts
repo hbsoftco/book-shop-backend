@@ -1,7 +1,10 @@
 import express, { json, urlencoded } from "express";
+import { Logger } from "./utils/logger";
 class Server {
   private app: express.Application;
   private port: string | number;
+
+  private logger = Logger.getInstance();
 
   constructor(port: string | number) {
     this.app = express();
@@ -10,7 +13,7 @@ class Server {
 
   public listen(): void {
     this.app.listen(this.port, () => {
-      console.log(`Server is running on port ${this.port}`);
+      this.logger.info(`Server is running on port ${this.port}`);
     });
   }
 }
