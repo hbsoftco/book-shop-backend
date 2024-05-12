@@ -16,7 +16,14 @@ pipeline {
 
         stage("Build"){
             steps {
-                sh 'npm run build'
+                // sh 'npm run build'
+                sh 'pwd'
+            }
+        }
+
+        stage("Build Image"){
+            steps {
+                sh 'docker build -t book-shop-node-app-sara:1.0 .'
             }
         }
     }
