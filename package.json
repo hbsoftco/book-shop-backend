@@ -5,7 +5,9 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "start:dev": "nodemon"
+    "start:dev": "nodemon",
+    "start:prod": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/index.js",
+    "build": "tsc -p tsconfig.prod.json"
   },
   "keywords": [],
   "author": "",
