@@ -23,6 +23,7 @@ pipeline {
 
         stage("Build Image"){
             steps {
+                sh 'docker --version'
                 sh 'docker build -t book-shop-node-app-sara:1.0 .'
             }
         }
