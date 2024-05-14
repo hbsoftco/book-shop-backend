@@ -1,12 +1,29 @@
 pipeline {
     agent any 
     stages {
-        stage('Front-end') {
-            agent {
-                docker { image 'node:20.11.1-alpine3.19' }
-            }
+        stage("Checkout"){
             steps {
-                sh 'node --version'
+                checkout scm
+            }
+        }
+
+        stage("Test"){
+            steps {
+                sh 'pwd'
+                sh 'echo "test"'
+            }
+        }
+
+        stage("Build"){
+            steps {
+                // sh 'npm run build'
+                sh 'pwd'
+            }
+        }
+
+        stage("Build Image"){
+            steps {
+                sh 'docker build -t book-shop-node-app-sara:1.0 .'
             }
         }
     }
