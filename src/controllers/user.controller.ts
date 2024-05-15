@@ -1,8 +1,8 @@
-import { IUser } from '@src/interfaces/IUser';
-import User from '@src/models/user.model';
 import { Request, Response } from 'express';
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
+import User from '@src/models/user.model';
+import { IUser } from '@src/interfaces/IUser';
 
 class UserController {
   static async registerUser(req: Request, res: Response): Promise<void> {
@@ -50,6 +50,10 @@ class UserController {
     } catch (error) {
       res.status(500).json({ message: (error as Error).message });
     }
+  }
+
+  static async getAllUsers2() {
+    console.log('hbsoft controller');
   }
 }
 
