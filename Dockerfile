@@ -18,6 +18,10 @@ COPY --from=builder /app/dist ./dist
 COPY package*.json ./
 RUN npm install --only=production
 
+RUN pwd
+RUN ls
+RUN cat dist/index.js
+
 EXPOSE 3000
 
 CMD [ "node", "dist/index.js" ]
