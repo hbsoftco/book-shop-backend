@@ -19,6 +19,5 @@ COPY package*.json ./
 RUN npm install --only=production
 
 EXPOSE 3000
-# CMD [ "ls", "dist" ]
-# CMD [ "node", "run", "start:dev" ]
+
 CMD [ "node", "dist/src/index.js" ]
