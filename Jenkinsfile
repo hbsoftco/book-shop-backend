@@ -1,29 +1,29 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18-alpine'
-        }
-    }
+    agent any 
     stages {
-        stage('Install dependencies') {
+        stage("Checkout"){
             steps {
-                sh 'npm install'
+                checkout scm
             }
         }
-        stage('Test') {
+
+        stage("Test"){
             steps {
-                sh 'npm run test'
+                sh 'pwd'
+                sh 'echo "test"'
             }
         }
-        stage('Build') {
+
+        stage("Build"){
             steps {
-                sh 'npm run build'
+                // sh 'npm run build'
+                sh 'pwd'
             }
         }
-        stage('Deploy') {
+
+        stage("Build Image"){
             steps {
                 sh 'docker --version'
-                sh 'docker compose -f docker-compose.prod.yml up --build -d'
             }
         }
     }
