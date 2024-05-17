@@ -1,12 +1,10 @@
-version: '3.7'
+version: '3'
 services:
-  api:
-    build:
-      context: .
-      target: build
+  app:
+    build: .
+    command: npm run start:dev
     volumes:
-      - ./:/app
+      - .:/app
       - /app/node_modules
     ports:
-      - 4000:4000
-    command: npm run dev
+      - "3000:3000"

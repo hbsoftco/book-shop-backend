@@ -1,29 +1,25 @@
 pipeline {
-    agent any 
+    agent any
+
     stages {
-        stage("Checkout"){
+        stage('Install dependencies') {
             steps {
-                checkout scm
+                sh 'npm install'
             }
         }
-
-        stage("Test"){
+        stage('Test') {
             steps {
-                sh 'pwd'
-                sh 'echo "test"'
+                sh 'npm run test'
             }
         }
-
-        stage("Build"){
+        stage('Build') {
             steps {
-                // sh 'npm run build'
-                sh 'pwd'
+                sh 'npm run build'
             }
         }
-
-        stage("Build Image"){
+        stage('Deploy') {
             steps {
-                sh 'docker --version'
+                sh 'docker-compose -f docker-compose.prod.yml up --build -d'
             }
         }
     }

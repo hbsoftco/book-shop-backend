@@ -4,24 +4,20 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 COPY package*.json ./
-
 RUN npm install
 
 COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "run", "start:dev"]
+RUN npm run build
 
 # Stage 2: Production image (slim Node.js environment)
 FROM node:18-alpine
 
 WORKDIR /app
 
-COPY package*.json .
+COPY --from=builder /app/dist ./dist
+COPY package*.json ./
+RUN npm install --only=production
 
-RUN npm ci --only=production
+EXPOSE 3000
 
-COPY --from=build /app/dist ./dist
-
-CMD ["node", "dist/index.js"]
+CMD [ "node", "dist/index.js" ]
