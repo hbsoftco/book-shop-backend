@@ -4,3 +4,8 @@ services:
     build: .
     ports:
       - "3002:3002"
+    networks:
+      - jenkins_hbsoft
+networks:
+  jenkins_hbsoft:
+    external: true
