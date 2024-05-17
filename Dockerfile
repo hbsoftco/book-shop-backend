@@ -14,7 +14,7 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/ ./
 COPY package*.json ./
 RUN npm install
 
