@@ -20,4 +20,4 @@ RUN npm install --only=production
 
 EXPOSE 3000
 
-CMD [ "node", "dist/src/index.js" ]
+CMD [ "npm", "run", "start:prod" ]
