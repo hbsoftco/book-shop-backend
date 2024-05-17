@@ -20,4 +20,6 @@ RUN npm install --only=production
 
 EXPOSE 3000
 
+CMD [ "node", "rnu" , "start:dev" ]
+
 # CMD [ "node", "dist/index.js" ]
